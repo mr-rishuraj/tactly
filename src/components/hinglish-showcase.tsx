@@ -5,19 +5,19 @@ import { useState, useEffect } from "react";
 
 const examples = [
   {
-    start: "Bhai mujhe ye startup opportunity mil gaya, kya—",
+    start: "Bhai mujhe ye startup opportunity mil gaya, kya...",
     completion: "mujhe leap lena chahiye?",
   },
   {
-    start: "Yaar startup idea mil gaya kya—",
+    start: "Yaar startup idea mil gaya kya...",
     completion: "main bhi kuch explore kar raha tha.",
   },
   {
-    start: "Arey yaar, ye feature ke liye—",
+    start: "Arey yaar, ye feature ke liye...",
     completion: "kab tak timeline milega?",
   },
   {
-    start: "Dekho, mujhe help chahiye na—",
+    start: "Dekho, mujhe help chahiye na...",
     completion: "ye bug fix karne mein, urgent hai.",
   },
 ];
@@ -233,7 +233,7 @@ export function HinglishShowcase() {
             viewport={{ once: true }}
           >
             <motion.span
-              className="block text-foreground"
+              className="block text-foreground leading-none"
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.15 }}
@@ -241,9 +241,8 @@ export function HinglishShowcase() {
             >
               Fluent in how you
             </motion.span>
-            <br />
             <motion.span
-              className="block text-cyan-400"
+              className="block text-cyan-400 leading-none"
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.25 }}

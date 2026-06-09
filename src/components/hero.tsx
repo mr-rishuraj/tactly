@@ -170,7 +170,7 @@ export function Hero() {
                 <div className="px-6 md:px-8 pt-6 md:pt-8">
                   <p className="text-xs md:text-sm font-bold text-red-400/70 uppercase tracking-widest mb-4">Without Tactly</p>
                   <p className="text-xl md:text-2xl font-bold text-foreground/90 mb-6 leading-tight">
-                    "Hey! I love what you're doing. Your product seems really innovative. Would be great to connect and learn from you."
+                    "I'm impressed by your work. Would love to chat and see if we could collaborate on something."
                   </p>
                 </div>
 
@@ -222,15 +222,15 @@ export function Hero() {
                 <div className="px-6 md:px-8 pt-6 md:pt-8">
                   <p className="text-xs md:text-sm font-bold text-cyan-400/70 uppercase tracking-widest mb-4">With Tactly</p>
                   <p className="text-xl md:text-2xl font-bold text-foreground/95 mb-6 leading-tight">
-                    "Hey Rishu, been following how you think about communication tools. The way you approach this is interesting. I'm working on something related and would love your take on it. I think you'd have a really useful perspective on what we're building."
+                    "I was reading your thoughts. You notice what matters instead of what's obvious. How did you develop that perspective?"
                   </p>
                 </div>
 
                 {/* Strength Chips */}
                 <div className="px-6 md:px-8 py-4 flex-1 flex flex-col gap-3">
-                  <ChipBadge text="Intelligence-Driven" color="green" />
-                  <ChipBadge text="Strategically Aligned" color="green" />
-                  <ChipBadge text="Clear Value" color="green" />
+                  <ChipBadge text="Specific" color="green" />
+                  <ChipBadge text="Genuine Curiosity" color="green" />
+                  <ChipBadge text="Conversation Starter" color="green" />
                 </div>
 
                 {/* Footer with metrics */}
@@ -268,8 +268,8 @@ function ChipBadge({ text, color }: { text: string; color: "red" | "green" }) {
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05, x: 4 }}
-      className={`${baseClass} ${colorMap[color]} cursor-default inline-block w-fit`}
+      whileHover={{ scale: 1.05, y: -2 }}
+      className={`${baseClass} ${colorMap[color]} cursor-default w-full text-center`}
     >
       {text}
     </motion.div>
