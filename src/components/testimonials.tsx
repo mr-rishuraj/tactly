@@ -117,9 +117,9 @@ export function Testimonials() {
         {/* Marquee Container */}
         <div className="relative overflow-hidden">
           {/* Left gradient fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
           {/* Right gradient fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
 
           {/* Marquee */}
           <div className="flex gap-6 md:gap-8">
@@ -135,7 +135,7 @@ export function Testimonials() {
               {marqueeTestimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
-                  className="group rounded-2xl border border-white/15 bg-gradient-to-br from-white/5 to-white/3 hover:border-cyan-500/40 transition-all p-8 backdrop-blur-sm flex-shrink-0 w-96 h-80 flex flex-col"
+                  className="group rounded-2xl border border-white/15 bg-gradient-to-br from-white/5 to-white/3 hover:border-cyan-500/40 transition-all p-6 md:p-8 backdrop-blur-sm flex-shrink-0 w-80 md:w-96 h-72 md:h-80 flex flex-col"
                   whileHover={{ y: -4 }}
                 >
                   {/* Quote */}
