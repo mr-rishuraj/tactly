@@ -30,11 +30,24 @@ export function Footer() {
             viewport={{ once: true }}
             className="flex flex-col gap-4"
           >
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">T</span>
+            <div className="flex items-center gap-3">
+              {/* Icon */}
+              <div className="relative w-10 h-10 flex-shrink-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg opacity-90 shadow-lg shadow-cyan-500/30" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg font-space-grotesk">T</span>
+                </div>
               </div>
-              <span className="text-lg font-bold text-foreground">Tactly</span>
+
+              {/* Text */}
+              <div className="flex flex-col gap-0.5">
+                <span className="text-sm font-bold text-foreground leading-tight">
+                  Tactly
+                </span>
+                <span className="text-xs text-foreground/50 leading-tight">
+                  AI for Communication
+                </span>
+              </div>
             </div>
             <p className="text-sm text-foreground/70 font-medium leading-relaxed max-w-xs">
               Helping people communicate, not just write
