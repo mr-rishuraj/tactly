@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function CommunicationIntelligence() {
   return (
-    <section className="relative py-20 md:py-32 lg:py-40 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
+    <section className="relative py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-[0.01] pointer-events-none">
         <div
@@ -23,7 +23,7 @@ export function CommunicationIntelligence() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-24 md:mb-32"
+          className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="text-foreground">Grammar is a feature</span>

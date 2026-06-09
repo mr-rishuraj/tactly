@@ -36,7 +36,7 @@ const categories = [
 
 export function WhyTactly() {
   return (
-    <section className="relative py-20 md:py-32 lg:py-40 px-4 md:px-6 lg:px-8 overflow-hidden">
+    <section className="relative py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8 overflow-hidden">
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
         <div
@@ -59,7 +59,7 @@ export function WhyTactly() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-20"
+          className="text-center mb-10 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
             <span className="text-foreground">Most tools help you write</span>

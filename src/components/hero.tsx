@@ -42,7 +42,7 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen pt-32 pb-16 px-4 md:px-6 lg:px-8 flex items-center relative overflow-hidden">
+    <section className="min-h-screen pt-24 md:pt-28 pb-12 md:pb-16 px-4 md:px-6 lg:px-8 flex items-center relative overflow-hidden">
       {/* Animated Background grid pattern */}
       <motion.div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -145,7 +145,7 @@ export function Hero() {
           className="relative"
         >
           {/* Section Title */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-14">
             <span className="text-foreground">Communicating with intelligence</span>
             <br />
             <span className="text-foreground">vs. communicating blind</span>

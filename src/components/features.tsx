@@ -48,7 +48,7 @@ export function Features() {
   return (
     <section
       id="features"
-      className="relative py-20 md:py-32 lg:py-40 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5"
+      className="relative py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5"
     >
       {/* Subtle background grid */}
       <div className="absolute inset-0 opacity-[0.01] pointer-events-none">
@@ -69,7 +69,7 @@ export function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-20 md:mb-28 text-center"
+          className="mb-16 md:mb-20 text-center"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="text-foreground">Powered by</span>
@@ -85,7 +85,7 @@ export function Features() {
 
         {/* 3x2 Symmetrical Grid */}
         <motion.div
-          className="grid md:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
@@ -107,7 +107,7 @@ export function Features() {
               transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative rounded-2xl overflow-hidden h-[480px] md:h-[520px] cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden h-[420px] md:h-[480px] lg:h-[520px] cursor-pointer"
             >
               {/* Card background with modern gradient */}
               <motion.div

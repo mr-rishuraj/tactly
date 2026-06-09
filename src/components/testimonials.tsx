@@ -39,7 +39,7 @@ export function Testimonials() {
   const marqueeTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="relative py-20 md:py-32 lg:py-40 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
+    <section className="relative py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-[0.01] pointer-events-none">
         <div
@@ -58,7 +58,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-24 md:mb-32"
+          className="text-center mb-16 md:mb-20"
         >
           <motion.div
             className="flex items-center justify-center gap-2 mb-4"
