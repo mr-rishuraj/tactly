@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useContact } from "@/contexts/contact-context";
 
 const faqs = [
   {
@@ -49,6 +50,7 @@ const faqs = [
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { openModal } = useContact();
 
   return (
     <section
@@ -141,12 +143,12 @@ export function FAQ() {
           <p className="text-foreground/70 mb-4 font-medium">
             Didn't find what you're looking for?
           </p>
-          <a
-            href="mailto:hey@tactly.ai"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors font-semibold"
+          <button
+            onClick={openModal}
+            className="text-cyan-400 hover:text-cyan-300 transition-colors font-semibold cursor-pointer"
           >
             Contact us →
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

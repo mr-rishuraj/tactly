@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { WaitlistProvider } from "@/contexts/waitlist-context";
 import { WaitlistModalContainer } from "@/components/waitlist-modal-container";
+import { ContactProvider } from "@/contexts/contact-context";
+import { ContactModalContainer } from "@/components/contact-modal-container";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,8 +60,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans" suppressHydrationWarning>
         <WaitlistProvider>
-          {children}
-          <WaitlistModalContainer />
+          <ContactProvider>
+            {children}
+            <WaitlistModalContainer />
+            <ContactModalContainer />
+          </ContactProvider>
         </WaitlistProvider>
       </body>
     </html>
