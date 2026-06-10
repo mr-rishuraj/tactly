@@ -204,7 +204,7 @@ When you make changes:
 
 ## 🚀 **Quick Links**
 
-- **Live Site**: https://tactly-mu.vercel.app
+- **Live Site**: https://tactly-ai.vercel.app
 - **GitHub**: https://github.com/mr-rishuraj/tactly
 - **Contact**: Use contact form at `/faq`
 

@@ -9,7 +9,7 @@
 **Tagline**: "Write with tact. Everywhere."  
 **Category**: AI Communication Copilot  
 **Status**: Production-Ready Landing Page (COMPLETE)  
-**Live URL**: https://tactly-mu.vercel.app  
+**Live URL**: https://tactly-ai.vercel.app  
 **GitHub**: mr-rishuraj/tactly  
 
 ### **What is TACTLY?**
@@ -364,7 +364,7 @@ Applied throughout:
 ## 🚀 **DEPLOYMENT**
 
 **Hosting**: Vercel  
-**Live URL**: https://tactly-mu.vercel.app  
+**Live URL**: https://tactly-ai.vercel.app  
 **Build**: `npm run build` (static pre-rendering)  
 **Performance**: Production optimized  
 

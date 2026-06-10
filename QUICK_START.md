@@ -1,7 +1,7 @@
 # TACTLY - Quick Start Guide
 
 **Status**: Production-Ready ✅  
-**Live**: https://tactly-mu.vercel.app  
+**Live**: https://tactly-ai.vercel.app  
 **Last Updated**: June 10, 2026
 
 ---
