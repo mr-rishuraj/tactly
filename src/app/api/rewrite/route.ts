@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const geminiStream = await ai.models.generateContentStream({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       contents: userPrompt,
       config: {
         systemInstruction: systemPrompt,
