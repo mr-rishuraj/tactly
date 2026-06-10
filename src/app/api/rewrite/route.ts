@@ -84,7 +84,11 @@ export async function POST(req: NextRequest) {
       },
     })
   } catch (error) {
-    console.error('Gemini error:', error)
-    return Response.json({ error: 'AI service error' }, { status: 502, headers: CORS_HEADERS })
+    const message = error instanceof Error ? error.message : String(error)
+    console.error('Gemini error:', message)
+    return Response.json(
+      { error: 'AI service error', detail: message },
+      { status: 502, headers: CORS_HEADERS },
+    )
   }
 }
