@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const navigationLinks = [
@@ -32,12 +33,13 @@ export function Footer() {
           >
             <div className="flex items-center gap-3">
               {/* Icon */}
-              <div className="relative w-10 h-10 flex-shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg opacity-90 shadow-lg shadow-cyan-500/30" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg font-space-grotesk">T</span>
-                </div>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Tactly"
+                width={40}
+                height={40}
+                className="rounded-lg shadow-lg shadow-cyan-500/30 flex-shrink-0"
+              />
 
               {/* Text */}
               <div className="flex flex-col gap-0.5">

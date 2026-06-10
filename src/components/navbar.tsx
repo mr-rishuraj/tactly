@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -48,12 +49,13 @@ export function Navbar() {
           className="flex items-center gap-3 group transition-all duration-300 active:scale-95"
         >
           {/* Icon */}
-          <div className="relative w-10 h-10 flex-shrink-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg opacity-90 group-hover:opacity-100 transition-opacity shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-500/50 group-hover:shadow-xl" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white font-bold text-lg font-space-grotesk">T</span>
-            </div>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Tactly"
+            width={40}
+            height={40}
+            className="rounded-lg shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-500/50 group-hover:shadow-xl transition-shadow flex-shrink-0"
+          />
 
           {/* Text */}
           <div className="flex flex-col gap-0.5">
