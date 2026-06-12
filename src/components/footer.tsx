@@ -136,18 +136,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="https://twitter.com/tactlyai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground/50 hover:text-cyan-400 transition-colors duration-200"
-              aria-label="Twitter"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7s-1.5 7.5-7 10" />
-              </svg>
-            </a>
-            <a
-              href="https://linkedin.com/company/tactly"
+              href="https://www.linkedin.com/company/tactly/?viewAsMember=true"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/50 hover:text-cyan-400 transition-colors duration-200"
