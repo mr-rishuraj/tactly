@@ -8,7 +8,6 @@ import { ToneEngine } from "@/components/tone-engine";
 import { Comparison } from "@/components/comparison";
 import { CommunicationIntelligence } from "@/components/communication-intelligence";
 import { FutureVision } from "@/components/future-vision";
-import { Testimonials } from "@/components/testimonials";
 import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
 
@@ -26,7 +25,6 @@ export default function Home() {
         <Comparison />
         <CommunicationIntelligence />
         <FutureVision />
-        <Testimonials />
         <FAQ />
       </main>
       <Footer />
