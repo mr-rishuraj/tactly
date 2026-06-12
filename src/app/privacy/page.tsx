@@ -211,7 +211,7 @@ export default function PrivacyPage() {
                 </p>
                 <div className="mt-4 p-6 rounded-lg bg-white/5 border border-white/10">
                   <p className="text-foreground font-medium">
-                    Email: <a href="mailto:privacy@tactly.ai" className="text-cyan-400 hover:text-cyan-300 transition-colors">privacy@tactly.ai</a>
+                    Email: <a href="mailto:usetactly.ai@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">usetactly.ai@gmail.com</a>
                   </p>
                 </div>
               </div>

@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
         console.error("RESEND_API_KEY is not set");
       } else {
         const emailResponse = await resend.emails.send({
-          from: "Tactly <onboarding@resend.dev>",
+          from: "Tactly <usetactly.ai@gmail.com>",
           to: email,
           subject: "Welcome to the Tactly Waitlist",
           html: `
