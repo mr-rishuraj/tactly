@@ -5,6 +5,7 @@ import { WaitlistProvider } from "@/contexts/waitlist-context";
 import { WaitlistModalContainer } from "@/components/waitlist-modal-container";
 import { ContactProvider } from "@/contexts/contact-context";
 import { ContactModalContainer } from "@/components/contact-modal-container";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +59,21 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased dark`}
     >
+      <head>
+        {/* Privacy-friendly analytics by Plausible */}
+        <Script
+          async
+          src="https://plausible.io/js/pa-hItDaXkMZZ_kwj-YXq5l8.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="plausible-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans" suppressHydrationWarning>
         <WaitlistProvider>
           <ContactProvider>
