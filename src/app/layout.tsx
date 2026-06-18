@@ -52,6 +52,9 @@ export const metadata: Metadata = {
     description: "Write with tact. Everywhere. The AI communication copilot that helps you say the right thing across LinkedIn, Gmail, X, Slack, Discord, and more.",
     creator: "@usetactly",
   },
+  other: {
+    "twitter:image": "https://tactly-ai.vercel.app/og-image.png",
+  },
 };
 
 export default function RootLayout({
