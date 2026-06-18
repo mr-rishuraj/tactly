@@ -25,27 +25,32 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tactly-ai.vercel.app"),
   title: "Tactly - Communication Intelligence for the Internet",
   description: "Write with tact. Everywhere. The AI communication copilot that helps you say the right thing across LinkedIn, Gmail, X, Slack, Discord, and more.",
   keywords: ["AI", "Communication", "Writing", "Copilot", "Tone", "Personalization"],
+  robots: "index, follow",
   openGraph: {
-    title: "Tactly - Communication Intelligence",
-    description: "Write with tact. Everywhere.",
-    url: "https://tactly.ai",
+    title: "Tactly - Communication Intelligence for the Internet",
+    description: "Write with tact. Everywhere. The AI communication copilot that helps you say the right thing across LinkedIn, Gmail, X, Slack, Discord, and more.",
+    url: "https://tactly-ai.vercel.app",
     siteName: "Tactly",
+    locale: "en_US",
+    type: "website",
     images: [
       {
-        url: "https://tactly.ai/og-image.png",
+        url: "https://tactly-ai.vercel.app/og-image.png",
         width: 1200,
         height: 630,
+        alt: "Tactly - Communication Intelligence Platform",
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tactly - Communication Intelligence",
-    description: "Write with tact. Everywhere.",
+    title: "Tactly - Communication Intelligence for the Internet",
+    description: "Write with tact. Everywhere. The AI communication copilot that helps you say the right thing across LinkedIn, Gmail, X, Slack, Discord, and more.",
+    creator: "@usetactly",
   },
 };
 
