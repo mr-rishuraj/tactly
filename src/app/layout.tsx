@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://tactly-ai.vercel.app/og-image.png",
+        url: "https://tactly-ai.vercel.app/OG.png",
         width: 1200,
         height: 630,
         alt: "Tactly - Communication Intelligence Platform",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     creator: "@usetactly",
   },
   other: {
-    "twitter:image": "https://tactly-ai.vercel.app/og-image.png",
+    "twitter:image": "https://tactly-ai.vercel.app/OG.png",
   },
 };
 
