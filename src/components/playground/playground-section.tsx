@@ -209,6 +209,7 @@ export function PlaygroundSection({ hero = false }: { hero?: boolean }) {
                 placeholder="Paste an email, LinkedIn message, tweet, Slack message, or any text here…"
                 rows={7}
                 className="w-full bg-transparent text-foreground/90 placeholder:text-foreground/30 text-sm leading-relaxed p-5 resize-none outline-none"
+                suppressHydrationWarning
               />
               <div className="flex items-center justify-between px-5 py-3 border-t border-white/5">
                 <span className={`text-xs font-medium ${isOverLimit ? "text-red-400" : "text-foreground/30"}`}>
