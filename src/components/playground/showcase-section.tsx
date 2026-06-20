@@ -16,7 +16,7 @@ interface ShowcaseExample {
 const EXAMPLES: ShowcaseExample[] = [
   {
     platform: "linkedin",
-    icon: "💼",
+    icon: "in",
     label: "LinkedIn",
     transformation: "Professional",
     before:
@@ -26,13 +26,13 @@ const EXAMPLES: ShowcaseExample[] = [
   },
   {
     platform: "email",
-    icon: "📧",
+    icon: "@",
     label: "Email",
-    transformation: "Confident Follow-up",
+    transformation: "Confident",
     before:
       "Hi, I just wanted to follow up on the email I sent last week about the proposal. I wasn't sure if you had a chance to review it yet. No worries if you're busy, I totally understand! Just let me know whenever you get a chance. Thanks so much!",
     after:
-      "Checking in on the proposal from last week — have you had a chance to review? Happy to jump on a 15-min call to answer questions and walk through the details.",
+      "Checking in on the proposal from last week — have you had a chance to review? Happy to jump on a 15-min call to answer questions.",
   },
   {
     platform: "x",
@@ -40,7 +40,7 @@ const EXAMPLES: ShowcaseExample[] = [
     label: "X / Twitter",
     transformation: "Founder",
     before:
-      "Super excited to share that we've been working on a new project that's going to completely change how people communicate! More details coming very soon, so make sure to follow to stay updated! Very exciting times ahead!!",
+      "Super excited to share that we've been working on a new project that's going to completely change how people communicate! More details coming very soon, so make sure to follow to stay updated!",
     after: "We're rebuilding how people communicate on the internet. More in two weeks.",
   },
   {
@@ -49,12 +49,12 @@ const EXAMPLES: ShowcaseExample[] = [
     label: "Slack",
     transformation: "Casual",
     before:
-      "Hey everyone, so sorry to interrupt! I was just wondering if maybe one of you could possibly help me out with this bug I've been stuck on for a while now? I know everyone is super busy so absolutely no pressure at all, I truly appreciate it!",
+      "Hey everyone, so sorry to interrupt! I was just wondering if maybe one of you could possibly help me out with this bug I've been stuck on? I know everyone is super busy so absolutely no pressure at all!",
     after: "Stuck on a gnarly bug — anyone free to pair for 20 min today?",
   },
   {
     platform: "whatsapp",
-    icon: "💬",
+    icon: "W",
     label: "WhatsApp",
     transformation: "Friendly",
     before:
@@ -68,105 +68,105 @@ export function ShowcaseSection() {
   const example = EXAMPLES[active];
 
   return (
-    <section className="relative py-16 md:py-24 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative py-14 md:py-20 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-cyan-500/4 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
+
+        {/* Header — compact */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 md:mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-6">
-            <Sparkles size={12} />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/8 text-cyan-400 text-[11px] font-semibold uppercase tracking-widest mb-5">
+            <Sparkles size={11} />
             Real Examples
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 leading-tight">
             <span className="text-foreground">Bad message. </span>
             <span className="text-cyan-400">Better message.</span>
           </h2>
-          <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto">
+          <p className="text-[14px] md:text-[15px] text-foreground/50 max-w-xl mx-auto">
             See how Tactly transforms real communication across every platform you use.
           </p>
         </motion.div>
 
-        {/* Platform Tabs */}
+        {/* Platform tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.08 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-2 justify-center mb-10 md:mb-12"
+          className="flex flex-wrap gap-2 justify-center mb-8"
         >
           {EXAMPLES.map((ex, i) => (
             <motion.button
               key={ex.platform}
               onClick={() => setActive(i)}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-[13px] transition-all duration-250 ${
                 active === i
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white border border-cyan-400/50 shadow-lg shadow-cyan-500/20"
-                  : "bg-white/5 text-foreground/70 hover:bg-white/10 hover:text-foreground border border-white/15 hover:border-white/25"
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white border border-cyan-400/40 shadow-[0_2px_12px_rgba(6,182,212,0.25)]"
+                  : "bg-white/[0.04] text-foreground/55 hover:bg-white/[0.08] hover:text-foreground/85 border border-white/[0.1] hover:border-white/[0.2]"
               }`}
             >
-              <span>{ex.icon}</span>
+              <span className={`font-mono text-[11px] font-bold ${active === i ? "text-white/80" : "text-foreground/35"}`}>
+                {ex.icon}
+              </span>
               {ex.label}
             </motion.button>
           ))}
         </motion.div>
 
-        {/* Before / After Cards */}
+        {/* Before / After */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35 }}
-            className="grid md:grid-cols-2 gap-6 items-start"
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.28 }}
+            className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch"
           >
             {/* Before */}
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/3 to-white/[0.01] p-6 md:p-8 backdrop-blur-sm">
-              <div className="flex items-center gap-2 mb-5">
-                <span className="w-2 h-2 rounded-full bg-red-400/60" />
-                <p className="text-xs font-bold text-foreground/40 uppercase tracking-widest">
-                  Before
-                </p>
+            <div className="rounded-2xl border border-white/[0.09] bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-6 md:p-7 backdrop-blur-sm flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400/50" />
+                <p className="text-[10px] font-bold text-foreground/30 uppercase tracking-[0.12em]">Before</p>
               </div>
-              <p className="text-base md:text-lg text-foreground/60 leading-relaxed">
+              <p className="text-[15px] text-foreground/50 leading-relaxed flex-1">
                 {example.before}
               </p>
             </div>
 
-            {/* Arrow - visible on mobile as down arrow, hidden on desktop */}
+            {/* Mobile arrow */}
             <div className="flex justify-center md:hidden">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500/30 bg-cyan-500/10">
-                <ArrowDown size={18} className="text-cyan-400" />
+              <div className="flex items-center justify-center w-9 h-9 rounded-full border border-cyan-500/25 bg-cyan-500/8">
+                <ArrowDown size={16} className="text-cyan-400" />
               </div>
             </div>
 
             {/* After */}
-            <div className="relative rounded-2xl border border-cyan-500/25 bg-gradient-to-br from-cyan-500/8 to-blue-500/5 p-6 md:p-8 backdrop-blur-sm">
-              {/* Desktop arrow overlay */}
-              <div className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 items-center justify-center w-8 h-8 rounded-full border border-cyan-500/30 bg-background shadow-md">
-                <span className="text-cyan-400 text-xs font-bold">→</span>
+            <div className="relative rounded-2xl border border-cyan-500/20 bg-gradient-to-b from-cyan-500/[0.06] to-blue-500/[0.03] p-6 md:p-7 backdrop-blur-sm flex flex-col gap-4 shadow-[0_0_30px_rgba(6,182,212,0.05)]">
+              {/* Desktop connector */}
+              <div className="hidden md:flex absolute -left-3.5 top-1/2 -translate-y-1/2 items-center justify-center w-7 h-7 rounded-full border border-cyan-500/25 bg-background text-cyan-400 text-[11px] font-bold shadow-sm">
+                →
               </div>
 
-              <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                  <p className="text-xs font-bold text-cyan-400/70 uppercase tracking-widest">
-                    Tactly
-                  </p>
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_4px_rgba(6,182,212,0.6)]" />
+                  <p className="text-[10px] font-bold text-cyan-400/60 uppercase tracking-[0.12em]">Tactly</p>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/20 font-medium">
+                <span className="text-[11px] px-2.5 py-1 rounded-full bg-cyan-500/12 text-cyan-400 border border-cyan-500/20 font-semibold">
                   {example.transformation}
                 </span>
               </div>
-              <p className="text-base md:text-lg text-foreground/90 leading-relaxed font-medium">
+              <p className="text-[16px] text-foreground/90 leading-relaxed font-medium flex-1 tracking-[-0.01em]">
                 {example.after}
               </p>
             </div>
@@ -176,9 +176,9 @@ export function ShowcaseSection() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-foreground/40 mt-10 font-medium"
+          className="text-center text-[12px] text-foreground/30 mt-8 font-medium tracking-wide"
         >
           Same intent. Sharper delivery. Higher response rate.
         </motion.p>
