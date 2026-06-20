@@ -43,7 +43,7 @@ const PLATFORMS: PlatformOption[] = [
 
 const MAX_CHARS = 2000;
 
-export function PlaygroundSection() {
+export function PlaygroundSection({ hero = false }: { hero?: boolean }) {
   const [input, setInput] = useState("");
   const [selectedTone, setSelectedTone] = useState(0);
   const [selectedPlatform, setSelectedPlatform] = useState(0);
@@ -139,39 +139,64 @@ export function PlaygroundSection() {
   const isOverLimit = input.length > MAX_CHARS;
 
   return (
-    <section className="relative py-16 md:py-24 px-4 md:px-6 lg:px-8 overflow-hidden border-t border-white/5">
+    <section className={`relative px-4 md:px-6 lg:px-8 overflow-hidden ${hero ? "pt-32 md:pt-36 pb-16 md:pb-24" : "py-16 md:py-24 border-t border-white/5"}`}>
       {/* Background glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-blue-500/6 rounded-full blur-3xl pointer-events-none"
+        animate={{ y: [0, 20, 0], opacity: [0.06, 0.1, 0.06] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-cyan-500/6 rounded-full blur-3xl pointer-events-none"
+        animate={{ y: [0, -20, 0], opacity: [0.06, 0.1, 0.06] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+      {/* Grid */}
+      {hero && (
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none">
+          <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(90deg, currentColor 1px, transparent 1px), linear-gradient(currentColor 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+        </div>
+      )}
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: hero ? 30 : 20 }}
+          animate={hero ? { opacity: 1, y: 0 } : undefined}
+          whileInView={hero ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          viewport={hero ? undefined : { once: true }}
+          className="text-center mb-10 md:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-semibold uppercase tracking-widest mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-6">
             <Sparkles size={12} />
-            Try It Yourself
+            {hero ? "No Extension Needed" : "Try It Yourself"}
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-            <span className="text-foreground">Your message. </span>
-            <span className="text-cyan-400">Tactly rewritten.</span>
-          </h2>
+          {hero ? (
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+              <span className="block text-foreground">Paste your message.</span>
+              <span className="block text-cyan-400">See the difference.</span>
+            </h1>
+          ) : (
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+              <span className="text-foreground">Your message. </span>
+              <span className="text-cyan-400">Tactly rewritten.</span>
+            </h2>
+          )}
           <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto">
-            Paste any text. Pick a tone. See the difference instantly.
+            {hero
+              ? "Pick a tone. Click Tactify. Get a sharper message in seconds — no install, no sign-up."
+              : "Paste any text. Pick a tone. See the difference instantly."}
           </p>
         </motion.div>
 
         {/* Two-column layout */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
+          animate={hero ? { opacity: 1, y: 0 } : undefined}
+          whileInView={hero ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          viewport={hero ? undefined : { once: true }}
           className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start"
         >
           {/* ── LEFT: Input ── */}
