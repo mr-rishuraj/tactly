@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { useWaitlist } from "@/contexts/waitlist-context";
 import { useAuth } from "@/contexts/auth-context";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   DURATIONS,
   DELAYS,
@@ -16,8 +16,8 @@ import {
 } from "@/lib/motion";
 
 export function Hero() {
-  const { openModal } = useWaitlist();
   const { user } = useAuth();
+  const router = useRouter();
 
   const containerVariants = CONTAINER_VARIANTS.delayedStagger(DELAYS.small, DELAYS.small);
   const itemVariants = ITEM_VARIANTS.slideScaleIn;
@@ -123,7 +123,7 @@ export function Hero() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={openModal}
+                onClick={() => router.push("/signup")}
                 className="px-8 py-3 md:px-10 md:py-3.5 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold text-base md:text-lg transition-all duration-200 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 whitespace-nowrap"
               >
                 Get Started Free
