@@ -21,7 +21,7 @@ export function Hero() {
 
   const containerVariants = CONTAINER_VARIANTS.delayedStagger(DELAYS.small, DELAYS.small);
   const itemVariants = ITEM_VARIANTS.slideScaleIn;
-  const textVariants = TEXT_VARIANTS.characterAnimate(DELAYS.medium);
+  const textVariants = TEXT_VARIANTS.characterAnimate(DELAYS.small);
 
   return (
     <section className="min-h-[85vh] pt-24 md:pt-28 px-4 md:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden">

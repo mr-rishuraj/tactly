@@ -2,6 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import {
+  DURATIONS,
+  DELAYS,
+  TRANSITIONS,
+  VIEWPORT_SETTINGS,
+  HOVER_VARIANTS,
+  BACKGROUND_ANIMATIONS,
+} from "@/lib/motion";
 
 const testimonials = [
   {
@@ -56,20 +64,19 @@ export function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
+          transition={{ duration: DURATIONS.slow, ease: "easeOut" }}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="text-center mb-16 md:mb-20"
         >
           <motion.div
             className="flex items-center justify-center gap-2 mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            transition={{ duration: DURATIONS.normal, delay: DELAYS.tiny }}
+            viewport={VIEWPORT_SETTINGS.standard}
           >
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              {...BACKGROUND_ANIMATIONS.rotate}
             >
               <Sparkles size={16} className="text-cyan-400/70" />
             </motion.div>
@@ -81,15 +88,15 @@ export function Testimonials() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: DURATIONS.slow, delay: DELAYS.small }}
+            viewport={VIEWPORT_SETTINGS.standard}
           >
             <motion.span
               className="block text-foreground"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              viewport={{ once: true }}
+              transition={{ duration: DURATIONS.normal, delay: DELAYS.medium }}
+              viewport={VIEWPORT_SETTINGS.standard}
             >
               People are transforming
             </motion.span>
@@ -97,8 +104,8 @@ export function Testimonials() {
               className="block text-cyan-400"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              viewport={{ once: true }}
+              transition={{ duration: DURATIONS.normal, delay: DELAYS.medium + DELAYS.tiny }}
+              viewport={VIEWPORT_SETTINGS.standard}
             >
               their communication
             </motion.span>
@@ -107,8 +114,8 @@ export function Testimonials() {
             className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            viewport={{ once: true }}
+            transition={{ duration: DURATIONS.normal, delay: DELAYS.small + DELAYS.tiny }}
+            viewport={VIEWPORT_SETTINGS.standard}
           >
             From students to founders to creators. Tactly is helping people achieve real outcomes.
           </motion.p>
@@ -131,12 +138,13 @@ export function Testimonials() {
                 repeat: Infinity,
                 ease: "linear",
               }}
+              // Using PRESETS.marquee pattern
             >
               {marqueeTestimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
                   className="group rounded-2xl border border-white/15 bg-gradient-to-br from-white/5 to-white/3 hover:border-cyan-500/40 transition-all p-6 md:p-8 backdrop-blur-sm flex-shrink-0 w-80 md:w-96 h-72 md:h-80 flex flex-col"
-                  whileHover={{ y: -4 }}
+                  whileHover={HOVER_VARIANTS.lift}
                 >
                   {/* Quote */}
                   <p className="text-foreground/85 leading-relaxed text-base mb-8 flex-grow">
@@ -166,8 +174,8 @@ export function Testimonials() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
+          transition={{ duration: DURATIONS.normal, delay: DELAYS.small }}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="text-center text-sm text-foreground/50 mt-16 md:mt-20 italic"
         >
           Demo testimonials. Real user feedback coming after launch.

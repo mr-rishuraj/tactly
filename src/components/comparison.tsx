@@ -1,6 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  DURATIONS,
+  DELAYS,
+  TRANSITIONS,
+  VIEWPORT_SETTINGS,
+} from "@/lib/motion";
 
 type ComparisonValue = boolean | "Partial";
 
@@ -97,8 +103,8 @@ export function Comparison() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={TRANSITIONS.slow}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -115,8 +121,8 @@ export function Comparison() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={TRANSITIONS.smooth}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="overflow-x-auto rounded-2xl border border-white/15 bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-sm"
         >
           <table className="w-full">
@@ -194,8 +200,8 @@ export function Comparison() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
+          transition={{ duration: DURATIONS.normal, delay: DELAYS.small }}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="text-center text-sm text-foreground/60 mt-12 font-medium"
         >
           Traditional tools help you write. Tactly helps you <span className="text-cyan-400">communicate better</span>

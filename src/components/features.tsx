@@ -4,6 +4,15 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Sparkles, Zap, Globe, Palette, User, BarChart3, Mail, Briefcase, MessageSquare } from "lucide-react";
 import { X } from "lucide-react";
+import {
+  DURATIONS,
+  DELAYS,
+  TRANSITIONS,
+  CONTAINER_VARIANTS,
+  ITEM_VARIANTS,
+  HOVER_VARIANTS,
+  VIEWPORT_SETTINGS,
+} from "@/lib/motion";
 
 const featureCards = [
   {
@@ -67,8 +76,8 @@ export function Features() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={TRANSITIONS.slow}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="mb-16 md:mb-20 text-center"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -88,25 +97,17 @@ export function Features() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-              },
-            },
-          }}
+          viewport={VIEWPORT_SETTINGS.eager}
+          variants={CONTAINER_VARIANTS.stagger(DELAYS.small)}
         >
           {featureCards.map((card, index) => (
             <motion.div
               key={card.id}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: DURATIONS.normal, delay: index * DELAYS.tiny, ease: "easeOut" }}
+              viewport={VIEWPORT_SETTINGS.standard}
+              whileHover={HOVER_VARIANTS.liftScale}
               className="group relative rounded-2xl overflow-hidden h-[420px] md:h-[480px] lg:h-[520px] cursor-pointer"
             >
               {/* Card background with modern gradient */}
@@ -120,7 +121,7 @@ export function Features() {
                 className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 rounded-2xl pointer-events-none"
                 initial={{ opacity: 0.5 }}
                 whileHover={{ opacity: 0.8 }}
-                transition={{ duration: 0.3 }}
+                transition={TRANSITIONS.fast}
               />
 
               {/* Content */}
@@ -130,13 +131,13 @@ export function Features() {
                   className="mb-8"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
+                  transition={{ delay: DELAYS.small + index * DELAYS.tiny, duration: DURATIONS.normal }}
+                  viewport={VIEWPORT_SETTINGS.standard}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 200 }}
+                      transition={TRANSITIONS.spring}
                     >
                       <card.icon size={48} className="text-cyan-400" />
                     </motion.div>
@@ -180,7 +181,7 @@ function RewriteDemo() {
           <motion.div
             key={i}
             animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, delay: i * 0.25 }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * DELAYS.medium }}
             className="opacity-80"
           >
             <Icon size={32} className="text-cyan-400/70" />
@@ -227,7 +228,7 @@ function AutocompleteDemo() {
           {text}
           <motion.span
             animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.6, repeat: Infinity }}
+            transition={{ duration: DURATIONS.normal, repeat: Infinity }}
             className="text-cyan-400 ml-1"
           >
             |
@@ -239,6 +240,7 @@ function AutocompleteDemo() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={TRANSITIONS.smooth}
           className="bg-cyan-500/15 border border-cyan-500/25 rounded-lg p-3"
         >
           <p className="text-xs text-cyan-400/90">
@@ -326,7 +328,7 @@ function HinglishDemo() {
           {!showSuggestion && (
             <motion.span
               animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.6, repeat: Infinity }}
+              transition={{ duration: DURATIONS.normal, repeat: Infinity }}
               className="text-cyan-400"
             >
               |
@@ -338,7 +340,7 @@ function HinglishDemo() {
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={TRANSITIONS.smooth}
               className="text-foreground/40"
             >
               {currentExample.suggestion}
@@ -350,7 +352,7 @@ function HinglishDemo() {
             <motion.span
               initial={{ opacity: 0.4 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={TRANSITIONS.fast}
               className="text-cyan-400"
             >
               {currentExample.suggestion}
@@ -364,7 +366,7 @@ function HinglishDemo() {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={TRANSITIONS.fast}
           className="text-xs text-cyan-400/70 font-medium"
         >
           Press Tab to accept →
@@ -376,7 +378,7 @@ function HinglishDemo() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
+          transition={TRANSITIONS.fast}
           className="flex items-center gap-2 text-xs text-green-400/70"
         >
           <span className="text-green-400">✓</span>
@@ -404,8 +406,8 @@ function ToneDemo() {
           <motion.button
             key={i}
             onClick={() => setActive(i)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={HOVER_VARIANTS.scaleUp}
+            whileTap={HOVER_VARIANTS.press}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               active === i
                 ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40"
@@ -422,7 +424,7 @@ function ToneDemo() {
         key={active}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={TRANSITIONS.fast}
         className="bg-white/5 border border-white/15 rounded-lg p-4 mt-2"
       >
         <p className="text-sm text-foreground/90">"{tones[active].text}"</p>
@@ -445,8 +447,8 @@ function VoiceDemo() {
           key={i}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: i * 0.1 }}
-          viewport={{ once: true }}
+          transition={{ duration: DURATIONS.normal, delay: i * DELAYS.tiny }}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="space-y-1.5"
         >
           <div className="flex justify-between text-xs">
@@ -454,8 +456,8 @@ function VoiceDemo() {
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: i * 0.1 + 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: DURATIONS.slow, delay: i * DELAYS.tiny + DELAYS.tiny }}
+              viewport={VIEWPORT_SETTINGS.standard}
               className="text-cyan-400 font-semibold"
             >
               {attr.value}%
@@ -465,8 +467,8 @@ function VoiceDemo() {
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: `${attr.value}%` }}
-              transition={{ duration: 1, delay: i * 0.1 + 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: DURATIONS.slow, delay: i * DELAYS.tiny + DELAYS.tiny }}
+              viewport={VIEWPORT_SETTINGS.standard}
               className="h-full bg-gradient-to-r from-cyan-500 to-blue-500"
             />
           </div>
@@ -491,15 +493,15 @@ function OptimizerDemo() {
           key={i}
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
-          viewport={{ once: true }}
+          transition={{ duration: DURATIONS.normal, delay: i * DELAYS.tiny }}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="bg-white/5 border border-white/15 rounded-lg p-4 text-center"
         >
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: i * 0.1 + 0.1 }}
-            viewport={{ once: true }}
+            transition={{ duration: DURATIONS.slow, delay: i * DELAYS.tiny + DELAYS.tiny }}
+            viewport={VIEWPORT_SETTINGS.standard}
             className="text-2xl font-bold text-cyan-400 mb-1"
           >
             {metric.value}%

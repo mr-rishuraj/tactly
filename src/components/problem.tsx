@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import {
+  DURATIONS,
+  DELAYS,
+  TRANSITIONS,
+  VIEWPORT_SETTINGS,
+} from "@/lib/motion";
 
 export function Problem() {
   const oldWaySteps = ["Write", "Copy", "ChatGPT", "Paste", "Rewrite", "Copy", "Paste Back"];
@@ -28,8 +34,8 @@ export function Problem() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={TRANSITIONS.slow}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -47,8 +53,8 @@ export function Problem() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={TRANSITIONS.smooth}
+            viewport={VIEWPORT_SETTINGS.standard}
           >
             <p className="text-xs font-bold text-red-400/70 uppercase tracking-widest mb-8 text-center">
               The Old Way (Without Tactly)
@@ -62,8 +68,8 @@ export function Problem() {
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.06 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: DURATIONS.fast, delay: index * DELAYS.tiny }}
+                    viewport={VIEWPORT_SETTINGS.standard}
                     className="flex items-center gap-3"
                   >
                     <div className="px-6 py-3 rounded-xl bg-gradient-to-br from-red-500/10 to-red-600/5 border border-red-500/25 text-base md:text-lg font-semibold text-red-400/80 whitespace-nowrap hover:border-red-500/40 transition-all backdrop-blur-sm min-w-fit">
@@ -84,8 +90,8 @@ export function Problem() {
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                viewport={{ once: true }}
+                transition={{ duration: DURATIONS.normal, delay: DELAYS.small }}
+                viewport={VIEWPORT_SETTINGS.standard}
                 className="text-center text-sm text-red-400/60 mt-8 font-medium"
               >
                 7 steps • Lost context • Tab switching • Slow
@@ -100,8 +106,8 @@ export function Problem() {
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.06 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: DURATIONS.fast, delay: index * DELAYS.tiny }}
+                    viewport={VIEWPORT_SETTINGS.standard}
                     className="flex flex-col items-center gap-3 w-full"
                   >
                     <div className="px-6 py-3 rounded-xl bg-gradient-to-br from-red-500/10 to-red-600/5 border border-red-500/25 text-base font-semibold text-red-400/80 whitespace-nowrap hover:border-red-500/40 transition-all backdrop-blur-sm w-full text-center">
@@ -122,8 +128,8 @@ export function Problem() {
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                viewport={{ once: true }}
+                transition={{ duration: DURATIONS.normal, delay: DELAYS.small }}
+                viewport={VIEWPORT_SETTINGS.standard}
                 className="text-center text-sm text-red-400/60 mt-8 font-medium"
               >
                 7 steps • Lost context • Tab switching • Slow
@@ -136,8 +142,8 @@ export function Problem() {
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
+          transition={{ duration: DURATIONS.normal, delay: DELAYS.medium }}
+          viewport={VIEWPORT_SETTINGS.standard}
           className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-20 md:mb-32"
         />
 
@@ -146,8 +152,8 @@ export function Problem() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={TRANSITIONS.smooth}
+            viewport={VIEWPORT_SETTINGS.standard}
           >
             <p className="text-xs font-bold text-cyan-400/70 uppercase tracking-widest mb-8 text-center">
               The Better Way (With Tactly)
@@ -161,8 +167,8 @@ export function Problem() {
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: DURATIONS.fast, delay: index * DELAYS.tiny + DELAYS.medium }}
+                    viewport={VIEWPORT_SETTINGS.standard}
                     className="flex items-center gap-3"
                   >
                     <div className="px-8 py-4 rounded-xl bg-gradient-to-br from-cyan-500/15 to-blue-500/10 border border-cyan-500/30 text-lg font-semibold text-cyan-400 whitespace-nowrap hover:border-cyan-500/50 transition-all backdrop-blur-sm min-w-fit">
@@ -183,8 +189,8 @@ export function Problem() {
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                viewport={{ once: true }}
+                transition={{ duration: DURATIONS.normal, delay: DELAYS.small + DELAYS.tiny }}
+                viewport={VIEWPORT_SETTINGS.standard}
                 className="text-center text-sm text-cyan-400/70 mt-8 font-medium"
               >
                 3 steps • Full context • No switching • Instant
@@ -199,8 +205,8 @@ export function Problem() {
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: DURATIONS.fast, delay: index * DELAYS.tiny + DELAYS.medium }}
+                    viewport={VIEWPORT_SETTINGS.standard}
                     className="flex flex-col items-center gap-3 w-full"
                   >
                     <div className="px-8 py-4 rounded-xl bg-gradient-to-br from-cyan-500/15 to-blue-500/10 border border-cyan-500/30 text-base font-semibold text-cyan-400 whitespace-nowrap hover:border-cyan-500/50 transition-all backdrop-blur-sm w-full text-center">
@@ -221,8 +227,8 @@ export function Problem() {
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                viewport={{ once: true }}
+                transition={{ duration: DURATIONS.normal, delay: DELAYS.small + DELAYS.tiny }}
+                viewport={VIEWPORT_SETTINGS.standard}
                 className="text-center text-sm text-cyan-400/70 mt-8 font-medium"
               >
                 3 steps • Full context • No switching • Instant

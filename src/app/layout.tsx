@@ -5,6 +5,7 @@ import { WaitlistProvider } from "@/contexts/waitlist-context";
 import { WaitlistModalContainer } from "@/components/waitlist-modal-container";
 import { ContactProvider } from "@/contexts/contact-context";
 import { ContactModalContainer } from "@/components/contact-modal-container";
+import { AuthProvider } from "@/contexts/auth-context";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -83,13 +84,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans" suppressHydrationWarning>
-        <WaitlistProvider>
-          <ContactProvider>
-            {children}
-            <WaitlistModalContainer />
-            <ContactModalContainer />
-          </ContactProvider>
-        </WaitlistProvider>
+        <AuthProvider>
+          <WaitlistProvider>
+            <ContactProvider>
+              {children}
+              <WaitlistModalContainer />
+              <ContactModalContainer />
+            </ContactProvider>
+          </WaitlistProvider>
+        </AuthProvider>
       </body>
     </html>
   );
