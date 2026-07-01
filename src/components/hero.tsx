@@ -3,46 +3,28 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useWaitlist } from "@/contexts/waitlist-context";
+import { useAuth } from "@/contexts/auth-context";
+import Link from "next/link";
+import {
+  DURATIONS,
+  DELAYS,
+  TRANSITIONS,
+  CONTAINER_VARIANTS,
+  ITEM_VARIANTS,
+  TEXT_VARIANTS,
+  BACKGROUND_ANIMATIONS,
+} from "@/lib/motion";
 
 export function Hero() {
   const { openModal } = useWaitlist();
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const { user } = useAuth();
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-      },
-    },
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: i * 0.15,
-      },
-    }),
-  };
+  const containerVariants = CONTAINER_VARIANTS.delayedStagger(DELAYS.small, DELAYS.small);
+  const itemVariants = ITEM_VARIANTS.slideScaleIn;
+  const textVariants = TEXT_VARIANTS.characterAnimate(DELAYS.medium);
 
   return (
-    <section className="h-screen pt-24 md:pt-28 px-4 md:px-6 lg:px-8 flex items-center relative overflow-hidden">
+    <section className="min-h-[85vh] pt-24 md:pt-28 px-4 md:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden">
       {/* Animated Background grid pattern */}
       <motion.div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -79,61 +61,74 @@ export function Hero() {
           duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 0.5,
+          delay: DELAYS.tiny,
         }}
       />
 
       <motion.div
-        className="max-w-7xl mx-auto w-full relative z-10"
+        className="max-w-4xl mx-auto w-full relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Headline */}
         <motion.div
-          className="text-center mb-8 md:mb-12"
+          className="text-center mb-6 md:mb-8"
           variants={itemVariants}
         >
-          <h1 className="mb-6 md:mb-8">
+          <h1 className="mb-4 md:mb-6">
             <motion.span
               className="block text-foreground"
               custom={0}
               variants={textVariants}
             >
-              Say the right thing
+              AI-Powered Writing
             </motion.span>
             <motion.span
               className="block text-cyan-400"
               custom={1}
               variants={textVariants}
             >
-              Every time.
+              For Every Conversation
             </motion.span>
           </h1>
 
           <motion.p
-            className="text-lg md:text-xl text-foreground/70 mb-10 max-w-3xl mx-auto"
+            className="text-base md:text-lg text-foreground/70 mb-8 max-w-2xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            Write with confidence across LinkedIn, Gmail, X, Slack, Discord, and anywhere else you communicate on the internet.
+            Write with confidence and authenticity across LinkedIn, Gmail, X, Slack, Discord, and everywhere you communicate.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-0"
+            className="flex flex-col sm:flex-row gap-3 justify-center mb-0"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.button
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={openModal}
-              className="px-8 py-4 md:px-12 md:py-6 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold text-lg md:text-xl transition-all duration-200 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 whitespace-nowrap"
-            >
-              Join Waitlist
-            </motion.button>
+            {user ? (
+              <Link href="/dashboard">
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-3 md:px-10 md:py-3.5 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold text-base md:text-lg transition-all duration-200 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 whitespace-nowrap inline-block"
+                >
+                  Go to Dashboard
+                </motion.div>
+              </Link>
+            ) : (
+              <motion.button
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={openModal}
+                className="px-8 py-3 md:px-10 md:py-3.5 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold text-base md:text-lg transition-all duration-200 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 whitespace-nowrap"
+              >
+                Get Started Free
+              </motion.button>
+            )}
           </motion.div>
         </motion.div>
 

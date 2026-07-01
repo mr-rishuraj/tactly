@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useWaitlist } from "@/contexts/waitlist-context";
+import { useAuth } from "@/contexts/auth-context";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -17,10 +18,12 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isAboutOrPrivacy = pathname === "/about" || pathname === "/privacy";
   const { openModal } = useWaitlist();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,14 +89,60 @@ export function Navbar() {
         {/* CTA & Mobile Menu */}
         <div className="flex items-center gap-3">
           {!isAboutOrPrivacy && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={openModal}
-              className="hidden sm:inline-flex px-6 py-2.5 md:py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 min-h-[44px] md:min-h-[auto] items-center"
-            >
-              Waitlist
-            </motion.button>
+            <>
+              {user ? (
+                <div className="relative">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200"
+                  >
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-xs font-bold text-white">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-sm font-medium text-foreground truncate max-w-[100px]">
+                      {user.name.split(" ")[0]}
+                    </span>
+                  </motion.button>
+
+                  {/* User Menu Dropdown */}
+                  {isUserMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute right-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl z-50"
+                    >
+                      <Link href="/dashboard">
+                        <div className="px-4 py-3 text-sm font-medium text-foreground hover:text-cyan-400 transition-colors hover:bg-white/5 first:rounded-t-lg">
+                          Dashboard
+                        </div>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          logout();
+                          setIsUserMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-3 text-sm font-medium text-foreground/70 hover:text-red-400 transition-colors hover:bg-white/5 last:rounded-b-lg flex items-center gap-2"
+                      >
+                        <LogOut size={16} />
+                        Logout
+                      </button>
+                    </motion.div>
+                  )}
+                </div>
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={openModal}
+                  className="hidden sm:inline-flex px-6 py-2.5 md:py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 min-h-[44px] md:min-h-[auto] items-center"
+                >
+                  Get Started
+                </motion.button>
+              )}
+            </>
           )}
 
           {/* Home Button on About/Privacy pages */}
@@ -142,17 +191,39 @@ export function Navbar() {
                     {link.label}
                   </a>
                 ))}
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    openModal();
-                    setIsOpen(false);
-                  }}
-                  className="w-full mt-4 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-semibold transition-all"
-                >
-                  Join Waitlist
-                </motion.button>
+                {user ? (
+                  <>
+                    <Link href="/dashboard">
+                      <div className="block text-sm font-medium text-foreground/70 hover:text-cyan-400 transition-colors py-2">
+                        Dashboard
+                      </div>
+                    </Link>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        logout();
+                        setIsOpen(false);
+                      }}
+                      className="w-full mt-4 px-6 py-2.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-semibold transition-all flex items-center justify-center gap-2"
+                    >
+                      <LogOut size={16} />
+                      Logout
+                    </motion.button>
+                  </>
+                ) : (
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      openModal();
+                      setIsOpen(false);
+                    }}
+                    className="w-full mt-4 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-semibold transition-all"
+                  >
+                    Get Started
+                  </motion.button>
+                )}
               </>
             ) : (
               <Link
